@@ -1,9 +1,19 @@
 :root{
     --default-layout-header-height:60px;
     --default-layout-width-content:1150px;
+    --black: #0000;
+    --text-color: #333;
 }
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+button, input, [tabindex]{
+    outline: none;
+    border: none;
+}
+a[href]{
+    color: var(--text-color);
+    text-decoration: none;
 }
