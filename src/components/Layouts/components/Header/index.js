@@ -6,6 +6,8 @@ import styles from './Header.module.scss'
 import images from "~/assets/images";
 import { useEffect, useState } from 'react';
 import { Wrapper as PropperWrapper } from '~/components/Layouts/Propper';
+import AccountItem from '~/components/AccountItem';
+import Button from '../Button';
 const cx = classNames.bind(styles)
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
@@ -20,13 +22,18 @@ function Header() {
             <div className={cx('logo')}>
                 <img src={images.logo} alt="Tiktok"/>
             </div>
-            <Tippy
+            <Tippy // Thẻ Tippy bao trùm "search" để khi tác động vào search
+                    // thì "search-rerult" hiện lên
                 interactive  //co phép chọn, copy
                 visible={searchResult.length > 0} //nếu true thì hiển thị
                 render={attrs => (
                     <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                         <PropperWrapper>
-                            Kết quả
+                            <h4 className={cx('search-title')}>
+                                Account
+                            </h4>
+                            <AccountItem/>
+                            <AccountItem/>
                         </PropperWrapper>
                     </div>
                   )}
@@ -43,7 +50,8 @@ function Header() {
                 </div>
             </Tippy>
             <div className={cx('actions')}>
-
+                <Button primary>Log in</Button>
+                <Button danger>Register</Button>
             </div>
         </div>
     </header>)

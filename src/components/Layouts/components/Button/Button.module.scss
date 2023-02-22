@@ -9,6 +9,9 @@
     &:hover{
         opacity: 0.8;
     }
+    + .btn{
+        margin-left: 16px;
+    }
 }
 .primary{
     background-color: #007bff;
