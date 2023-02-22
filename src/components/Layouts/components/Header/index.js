@@ -50,8 +50,9 @@ function Header() {
                 </div>
             </Tippy>
             <div className={cx('actions')}>
-                <Button primary>Log in</Button>
+                <Button onClick={()=>alert('ok')} primary>Log in</Button>
                 <Button danger>Register</Button>
+                <a href='https://google.com'>Click me</a>
             </div>
         </div>
     </header>)
