@@ -1,13 +1,39 @@
-import clsx from "clsx";
+import classNames from "classnames/bind";
+import { Link } from "react-router-dom";
 import style from "./Button.module.scss";
-function Button({ primary, danger,info, children }) {
-    const classes = clsx(style.btn, {
-        [style.primary]: primary,
-        [style.danger]: danger,
-        [style.info]: info
+const cx = classNames.bind(style)
+function Button({ 
+    to, 
+    href, 
+    primary=false, 
+    outline=false, 
+    danger=false,
+    info=false, 
+    children, 
+    onClick, 
+    passProps }) {
+    let Component = 'button'
+    const props = {
+        onClick,
+        ...passProps
+    }
+    if(to){
+        props.to = to
+        Component = Link
+    }
+    else if(href){
+        props.href = href
+        Component = 'a'
+    }
+    const classes = cx('wrapper',{
+        primary,
+        danger,
+        outline
     })
     return ( 
-        <button className={classes}>{children}</button>
+        <Component className={classes} {...props}>
+            <span>{ children }</span>
+        </Component>
      );
 }
 
